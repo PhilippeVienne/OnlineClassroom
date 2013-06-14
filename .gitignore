@@ -1,5 +1,6 @@
 *.rbc
 *.sassc
+.idea
 .sass-cache
 capybara-*.html
 .rspec
@@ -16,3 +17,4 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 .project
+.zeus.sock
