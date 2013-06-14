@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  home:
+    home: "Home"
+    welcome_message: "Welcome on OnlineClassroom, you can login you or register to access to this website"
