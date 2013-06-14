@@ -25,6 +25,8 @@ end
 gem 'jquery-rails'
 
 gem 'devise'
+gem 'cancan'
+gem 'rolify'
 gem 'simple_form'
 
 group :development, :test do
