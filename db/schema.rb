@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614161807) do
+ActiveRecord::Schema.define(:version => 20130615131453) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "possible_answer_id"
+    t.integer  "user_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -19,9 +26,29 @@ ActiveRecord::Schema.define(:version => 20130614161807) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "groups_subjects", :force => true do |t|
+    t.integer "group_id"
+    t.integer "subject_id"
+  end
+
   create_table "groups_users", :force => true do |t|
     t.integer "group_id"
     t.integer "user_id"
+  end
+
+  create_table "possible_answers", :force => true do |t|
+    t.text     "answer"
+    t.boolean  "correct"
+    t.integer  "question_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "questions", :force => true do |t|
+    t.text     "text"
+    t.integer  "subject_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|
@@ -34,6 +61,14 @@ ActiveRecord::Schema.define(:version => 20130614161807) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "subjects", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "teacher_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

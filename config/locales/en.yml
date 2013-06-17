@@ -6,3 +6,10 @@ en:
   home:
     home: "Home"
     welcome_message: "Welcome on OnlineClassroom, you can login you or register to access to this website"
+  devise:
+    actions:
+      login: "Login"
+      logout: "Logout"
+      my_account: "My Account"
+  locations:
+    home: "Home"
