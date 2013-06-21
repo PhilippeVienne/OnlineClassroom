@@ -3,4 +3,5 @@ class Question < ActiveRecord::Base
   belongs_to :subject
   has_many :possible_answers
   has_many :answers, :through => :possible_answers
+  has_one :teacher, :through => :subject
 end

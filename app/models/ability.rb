@@ -28,5 +28,13 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    user||=User.new
+    if user.has_role? :teacher
+      can :create, [Subject,Answer,PossibleAnswer,Question,Group]
+      can :manage, [Subject,Answer,PossibleAnswer,Question], :teacher => user
+      can :manage, Group do |s|
+        s.teachers.include? user
+      end
+    end
   end
 end

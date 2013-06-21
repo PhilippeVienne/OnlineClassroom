@@ -4,4 +4,5 @@ class Answer < ActiveRecord::Base
   belongs_to :possible_answer
   has_one :question, :through => :possible_answer
   has_one :subject, :through => :question
+  has_one :teacher, :through => :subject
 end
