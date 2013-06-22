@@ -9,7 +9,7 @@ FactoryGirl.define do
 
     factory :teacher do
       after(:create) do |t|
-        t.has_role :teacher
+        t.add_role :teacher
       end
     end
   end

@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :possible_answer do
-    answer "MyText"
+    sequence(:answer) {|n| "Answer #{n}"}
     correct false
-    question_id 1
   end
 end

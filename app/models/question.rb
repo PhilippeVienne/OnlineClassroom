@@ -4,4 +4,6 @@ class Question < ActiveRecord::Base
   has_many :possible_answers
   has_many :answers, :through => :possible_answers
   has_one :teacher, :through => :subject
+
+  validates_associated :subject
 end

@@ -6,4 +6,6 @@ class PossibleAnswer < ActiveRecord::Base
   has_one :teacher, :through => :subject
 
   has_many :answers
+
+  validates :question, :presence => true
 end

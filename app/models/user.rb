@@ -13,5 +13,16 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups
 
   has_many :answers
-  has_many :subjects, :through => :groups
+
+  def subjects
+    subjects=[]
+    groups.each do |g|
+      subjects << g.subjects
+    end
+    subjects
+  end
+
+  def self.students
+    User.all - User.with_role(:teacher)
+  end
 end
