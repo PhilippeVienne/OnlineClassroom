@@ -2,39 +2,40 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user 
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on. 
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
+
+    # See the wiki for help on this file:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+
+    guest=user.nil?
+
+    # If user does not logged, create an guest user
     user||=User.new
-    if user.has_role? :teacher
-      can :create, [Subject,Answer,PossibleAnswer,Question,Group]
-      can :manage, [Subject,Answer,PossibleAnswer,Question], :teacher => user
-      can :manage, Group do |s|
-        s.teachers.include? user
+
+    subject_group=[Subject, Answer, PossibleAnswer, Question]
+    all_resources=subject_group + [Group]
+
+    unless guest then
+
+      # Permissions for all users
+      can :join, Group # All users can join a group
+      can :view, Group do |g| # All users can view their group
+        g.users.include? user
+      end
+
+      if user.has_role? :teacher
+        can :create, all_resources # A teacher can create all resources on the website
+        can :manage, subject_group, :teacher => user # Teacher can manage its own subjects
+        can :manage, Group do |g| # Teacher can manage its groups
+          g.teachers.include? user
+        end
+        cannot :destroy, Group do |g| # Teacher can not destroy its group
+          g.teachers.count > 1 # if their is another teacher
+        end
+      else #Then the user is a student
+        can :answer, Subject do |s|
+          !(s.groups & user.groups).empty?
+        end
       end
     end
+    end
   end
-end
