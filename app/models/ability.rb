@@ -16,8 +16,10 @@ class Ability
 
     unless guest then
 
+      cannot :manage, all_resources
+
       # Permissions for all users
-      can :join, Group # All users can join a group
+      can [:join,:index, :leave,:update_user_associations], Group # All users can join a group
       can :view, Group do |g| # All users can view their group
         g.users.include? user
       end

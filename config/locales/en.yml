@@ -2,7 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  hello: "Hello"
   hello_to_someone: "Hello %{someone}"
   welcome_to_someone: "Hello %{someone}"
   home:
@@ -13,9 +13,24 @@ en:
       login: "Login"
       logout: "Logout"
       my_account: "My Account"
+    login:
+      links_presentation: "If you are a new user or if you just not remember your password, you can use links below :"
+      social_login: "In a next future, you will be able to log you with Facebook or Google."
   locations:
     home: "Home"
   actions:
     back: "Back"
     are_you_sure: "Are you sure?"
     update: "Update"
+    remember_me: "Remember me"
+    save: "Save"
+  groups:
+    errors:
+      already_in_this_group: "You are already in this group"
+      not_in_this_group: "You are not in this group"
+      error_when_join: "Error when try add you to this group : %{name}"
+      error_when_leave: "Error when try to remove you from the group : %{name}"
+    title: "My Groups"
+    head_text: "You can manage your presence in groups by the following form :"
+    success:
+      save: "Your groups are saved"

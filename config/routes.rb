@@ -1,5 +1,11 @@
 OnlineClassroom::Application.routes.draw do
 
+
+  get 'user/groups' => 'groups#index', as: :groups
+  get 'user/groups/join/:id' => 'groups#join', :as => :join_group
+  get 'user/groups/leave/:id' => 'groups#leave', :as => :leave_group
+  put 'user/groups/update' => 'groups#update_user_associations', :as => :group_update
+
   devise_for :users
 
   root :to => 'home#index'

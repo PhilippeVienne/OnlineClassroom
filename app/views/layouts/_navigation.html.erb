@@ -17,6 +17,7 @@
           </a>
           <ul class="dropdown-menu">
             <%= nav_link t('devise.actions.my_account'), edit_user_registration_path %>
+            <%= nav_link t('groups.title'), groups_path %>
             <li>
               <%=	link_to I18n.translate('devise.actions.logout'), destroy_user_session_path, :method => :delete %>
             </li>

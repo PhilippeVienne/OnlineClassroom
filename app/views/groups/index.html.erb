@@ -1,0 +1,9 @@
+<h1><%= t('groups.title') %></h1>
+<p><%= t('groups.head_text') %></p>
+<% user=current_user %>
+<%= simple_form_for user, :url => group_update_path, :html => {class:'form-horizontal'} do |f| %>
+  <%= f.association :groups%>
+  <div class="form-actions">
+    <%= f.button :submit, t('actions.save'), :class => %w{btn btn-primary} %>
+  </div>
+<% end %>
