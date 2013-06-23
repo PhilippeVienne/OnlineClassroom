@@ -3,6 +3,8 @@
 
 en:
   hello: "Hello world"
+  hello_to_someone: "Hello %{someone}"
+  welcome_to_someone: "Hello %{someone}"
   home:
     home: "Home"
     welcome_message: "Welcome on OnlineClassroom, you can login you or register to access to this website"
@@ -13,3 +15,7 @@ en:
       my_account: "My Account"
   locations:
     home: "Home"
+  actions:
+    back: "Back"
+    are_you_sure: "Are you sure?"
+    update: "Update"

@@ -2,10 +2,15 @@
 
 en:
   devise:
+    confirmation:
+      resend:
+        button: "Resend confirmation instructions"
+        page_head: "Resend confirmation instructions"
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account was not activated yet."
@@ -19,10 +24,19 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
+        click_below: "You can confirm your account email through the link below:"
+        button: "Confirm my account"
       reset_password_instructions:
         subject: "Reset password instructions"
+        click_below: "Someone has requested a link to change your password. You can do this through the link below."
+        button: "Reset my password"
+        paranoid: "If you didn't request this, please ignore this email."
+        paranoid_no_changes: "Your password won't change until you access the link above and create a new one."
       unlock_instructions:
         subject: "Unlock Instructions"
+        reason: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        click_below: "Click the link below to unlock your account:"
+        button: "Unlock my account"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -47,6 +61,15 @@ en:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+    registration:
+      edit:
+        waiting_confirmation: "Currently waiting confirmation for: %{email}"
+        page_head: "My account"
+        unhappy: "Unhappy?"
+    actions:
+      cancel_my_account: "Cancel my account"
+      sign_up: "Sign up"
+      sign_in: "Login"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
